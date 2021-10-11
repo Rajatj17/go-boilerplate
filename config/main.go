@@ -8,8 +8,9 @@ var AppConfig *ApplicationConfig
 
 func init() {
 	AppConfig = &ApplicationConfig{
-		Port:     envVarUtilities.GetSanitizedEnvAsInt("APP_PORT", "3000"),
-		DbConfig: setupDb(),
+		Port:        envVarUtilities.GetSanitizedEnvAsInt("APP_PORT", "3000"),
+		DbConfig:    setupDb(),
+		QueueConfig: setupQueueConnection(),
 	}
 }
 
@@ -21,5 +22,13 @@ func setupDb() DbConfig {
 		DbUser:     envVarUtilities.GetSanitizedEnvAsString("DB_USER", "rajat"),
 		DbPassword: envVarUtilities.GetFieldFromEnv("DB_PASSWORD", ""),
 		DbSslMode:  envVarUtilities.GetSanitizedEnvAsBoolean("DB_SSL_MODE", "FALSE"),
+	}
+}
+
+func setupQueueConnection() QueueConfig {
+	return QueueConfig{
+		ConnectionName: envVarUtilities.GetSanitizedEnvAsString("QUEUE_NAME", "default"),
+		Protocol:       envVarUtilities.GetSanitizedEnvAsString("REDIS_PROTOCOL", "tcp"),
+		Url:            envVarUtilities.GetSanitizedEnvAsString("REDIS_URL", "localhost:6379"),
 	}
 }

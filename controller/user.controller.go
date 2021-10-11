@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"main.go/library"
 	"main.go/models"
 	"main.go/repository"
 	"main.go/validator"
@@ -30,6 +31,8 @@ func (user UserController) Create(c *gin.Context) {
 		Password:  json.Password,
 		Username:  json.Username,
 	})
+
+	library.Dispatch("User Created")
 
 	c.JSON(http.StatusOK, gin.H{"success": true, "message": "User is created"})
 }
