@@ -1,3 +1,0 @@
-[metadata.heroku]
-  root-package = "go-boilerplate"
-  go-version = "go1.16"
