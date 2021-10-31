@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/adjust/gocheck v0.0.0-20131111155431-fbc315b36e0e // indirect
-	github.com/adjust/rmq v1.0.0
+	github.com/adjust/rmq v1.0.0 // indirect
 	github.com/adjust/rmq/v4 v4.0.1
 	github.com/adjust/uniuri v0.0.0-20130923163420-498743145e60 // indirect
 	github.com/garyburd/redigo v1.6.2 // indirect
